@@ -37,10 +37,20 @@
       background-color: rgb(37, 35, 35);
       padding: 10px;
       border-radius: 15px;
-      box-shadow: 7px 7px 0 black;
+      box-shadow: 7px 7px 0 rgb(35, 33, 33);
       border: 2px solid rgb(43, 38, 38);
     "
   >
+    <div
+      style="
+        color: white;
+        font: italic;
+        font-size: xx-small;
+        font-family: fantasy;
+      "
+    >
+      Vanger claculator
+    </div>
     <input
       type="text"
       style="
@@ -49,9 +59,10 @@
         background-color: white;
         margin-top: 10px;
         margin-bottom: 10px;
-        border-radius: 5px;
+        border-radius: 7px;
         font-size: xx-large;
-        border: 4px soild black;
+        border: 2px solid black;
+        box-shadow: 0px 8px 5px rgba(0, 0, 0, 0.12);
       "
     />
     <div class="buttonsPad">
@@ -78,5 +89,17 @@
       <button>.</button>
     </div>
   </div>
-  <script></script>
+  <script>
+    const audioagent = new AudioContext();
+
+    document.querySelectorAll(".buttonsPad button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const osc = audioagent.createOscillator();
+        osc.frequency.value = 1500;
+        osc.connect(audioagent.destination);
+        osc.start();
+        osc.stop(audioagent.currentTime + 0.09);
+      });
+    });
+  </script>
 </body>

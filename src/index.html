@@ -1,7 +1,14 @@
 <body>
   <style>
-    body {
+    canvas {
+      position: fixed;
+      z-index: -100;
+      inset: 0;
+      height: 100%;
+      width: 100%;
       background-color: black;
+    }
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -31,6 +38,7 @@
       transform: translateY(2px);
     }
   </style>
+  <canvas id="background"></canvas>
   <div
     style="
       width: 15vw;
@@ -89,6 +97,16 @@
     </div>
   </div>
   <script>
+    const canva = document.getElementById("background");
+    const ctx = canva.getContext("2d");
+    canva.width = window.innerWidth;
+    canva.height = window.innerHeight;
+    for (let i = 0; i < 1000; i++) {
+      ctx.beginPath();
+      ctx.arc(Math.random() * 1920, Math.random() * 1080, 2, 0, Math.PI * 2);
+      ctx.fillStyle = "white";
+      ctx.fill();
+    }
     const display = document.getElementById("display");
     var operation = "";
     var real_op = "";

@@ -102,8 +102,9 @@
     canva.width = window.innerWidth;
     canva.height = window.innerHeight;
     for (let i = 0; i < 1000; i++) {
+      let r = Math.random() * 3;
       ctx.beginPath();
-      ctx.arc(Math.random() * 1920, Math.random() * 1080, 2, 0, Math.PI * 2);
+      ctx.arc(Math.random() * 1920, Math.random() * 1080, r, 0, Math.PI * r);
       ctx.fillStyle = "white";
       ctx.fill();
     }

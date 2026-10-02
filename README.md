@@ -17,4 +17,4 @@ Web Audio api !!(now i have many ideas to use it in my projects)
 
 <img src="1.png">
 
-### fun fact: only 24 bytes are over in my 3Kb limit which is equal to the sentence "Hack Club (SHRINK YSWS)!"
+### fun fact: only 24 bytes are over in my 3Kb limit which is equal to the sentence "Hack Club (SHRINK YSWS)!!!!"

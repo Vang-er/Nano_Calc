@@ -14,7 +14,7 @@
       align-items: center;
       height: 100vh;
     }
-    .buttonsPad button {
+    .bP button {
       font-weight: 800;
       font-family: fantasy;
       font-size: xx-large;
@@ -27,18 +27,18 @@
       border-style: solid;
       transition: 100ms;
     }
-    .buttonsPad {
+    .bP {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 10px;
     }
-    .buttonsPad button:active {
+    .bP button:active {
       box-shadow: 1px 1px 0 rgb(35, 29, 29);
       scale: 95%;
       transform: translateY(2px);
     }
   </style>
-  <canvas id="background"></canvas>
+  <canvas id="b"></canvas>
   <div
     style="
       width: 15vw;
@@ -60,7 +60,7 @@
       Vanger claculator
     </div>
     <div
-      id="display"
+      id="d"
       type="text"
       style="
         width: 100%;
@@ -75,7 +75,7 @@
         overflow: scroll;
       "
     ></div>
-    <div class="buttonsPad">
+    <div class="bP">
       <button onclick="">AC</button>
       <button id="divide">&#247;</button>
       <button id="multiply">&#215;</button>
@@ -97,7 +97,7 @@
     </div>
   </div>
   <script>
-    const canva = document.getElementById("background");
+    const canva = document.getElementById("b");
     const ctx = canva.getContext("2d");
     canva.width = window.innerWidth;
     canva.height = window.innerHeight;
@@ -108,11 +108,11 @@
       ctx.fillStyle = "white";
       ctx.fill();
     }
-    const display = document.getElementById("display");
+    const display = document.getElementById("d");
     var operation = "";
     var real_op = "";
     const audioagent = new AudioContext();
-    document.querySelectorAll(".buttonsPad button").forEach((button) => {
+    document.querySelectorAll(".bP button").forEach((button) => {
       button.addEventListener("click", () => {
         const osc = audioagent.createOscillator();
         osc.frequency.value = 1500;

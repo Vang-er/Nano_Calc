@@ -1,7 +1,7 @@
 <body>
   <style>
     body {
-      background-color: rgb(21, 21, 84);
+      background-color: black;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -69,8 +69,8 @@
     ></div>
     <div class="buttonsPad">
       <button onclick="">AC</button>
-      <button>÷</button>
-      <button>×</button>
+      <button id="divide">&#247;</button>
+      <button id="multiply">&#215;</button>
       <button>DEL</button>
       <button>7</button>
       <button>8</button>
@@ -91,6 +91,7 @@
   <script>
     const display = document.getElementById("display");
     var operation = "";
+    var real_op = "";
     const audioagent = new AudioContext();
     document.querySelectorAll(".buttonsPad button").forEach((button) => {
       button.addEventListener("click", () => {
@@ -100,26 +101,42 @@
         osc.start();
         osc.stop(audioagent.currentTime + 0.09);
         if (button.innerHTML == "=") {
-          operation = operation.replaceAll("×", "*").replaceAll("÷", "/");
-          console.log(operation);
           try {
-            operation = eval(operation).toString();
+            console.log(real_op, operation);
+            real_op = eval(real_op).toString();
+            operation = real_op;
           } catch (error) {
+            console.log(error);
             operation = "ERR";
             display.innerHTML = operation;
-            console.log("working2");
             setTimeout(() => {
               operation = "";
+              real_op = "";
               display.innerHTML = operation;
             }, 500);
           }
           display.innerHTML = operation;
         } else if (button.innerHTML == "AC") {
           operation = "";
+          real_op = "";
+        } else if (button.id == "divide") {
+          operation = operation + "&#247;";
+          real_op = real_op + "/";
+          console.log(real_op);
+        } else if (button.id == "multiply") {
+          operation = operation + "&#215;";
+          real_op = real_op + "*";
+          console.log(real_op);
         } else if (button.innerHTML == "DEL") {
+          console.log(real_op);
+          console.log(operation);
           operation = operation.slice(0, -1);
+          real_op = real_op.slice(0, -1);
+          console.log(real_op);
+          console.log(operation);
         } else {
           operation = operation + button.innerHTML;
+          real_op = real_op + button.innerHTML;
         }
         display.innerHTML = operation;
       });
